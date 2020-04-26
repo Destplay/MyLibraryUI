@@ -9,12 +9,12 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-struct LoadingView<Content>: View where Content: View {
+public struct LoadingView<Content>: View where Content: View {
 
     @Binding var isShowing: Bool
     var content: () -> Content
 
-    var body: some View {
+    public var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .center) {
 
@@ -39,16 +39,16 @@ struct LoadingView<Content>: View where Content: View {
 }
 
 @available(iOS 13.0, *)
-struct ActivityIndicator: UIViewRepresentable {
+public struct ActivityIndicator: UIViewRepresentable {
 
     @Binding var isAnimating: Bool
     let style: UIActivityIndicatorView.Style
 
-    func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
+    public func makeUIView(context: UIViewRepresentableContext<ActivityIndicator>) -> UIActivityIndicatorView {
         return UIActivityIndicatorView(style: style)
     }
 
-    func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
+    public func updateUIView(_ uiView: UIActivityIndicatorView, context: UIViewRepresentableContext<ActivityIndicator>) {
         isAnimating ? uiView.startAnimating() : uiView.stopAnimating()
     }
 }

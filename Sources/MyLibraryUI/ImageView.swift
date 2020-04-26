@@ -9,7 +9,7 @@
 import SwiftUI
 
 @available(iOS 13.0, *)
-struct DetailImageView: View {
+public struct DetailImageView: View {
     @ObservedObject var imageLoader: ImageLoader
     @State var image: UIImage = UIImage()
 
@@ -17,7 +17,7 @@ struct DetailImageView: View {
         imageLoader = ImageLoader(urlString:url)
     }
     
-    var body: some View {
+    public var body: some View {
         VStack {
             Image(uiImage: imageLoader.data != nil ? UIImage(data:imageLoader.data!)! : UIImage())
                 .resizable()
@@ -27,7 +27,7 @@ struct DetailImageView: View {
 }
 
 @available(iOS 13.0, *)
-struct ZoomImageView: View {
+public struct ZoomImageView: View {
     @ObservedObject var imageLoader: ImageLoader
     
     @State var image: UIImage = UIImage()
@@ -41,7 +41,7 @@ struct ZoomImageView: View {
         self.imageLoader = ImageLoader(urlString:url)
     }
     
-    var body: some View {
+    public var body: some View {
         VStack {
             GeometryReader { geo in
                 Image(uiImage: self.imageLoader.data != nil ? UIImage(data: self.imageLoader.data!)! : UIImage())
@@ -93,7 +93,7 @@ struct ZoomImageView: View {
 }
 
 @available(iOS 13.0, *)
-class ImageLoader: ObservableObject {
+public class ImageLoader: ObservableObject {
     @Published var dataIsValid = false
     var data: Data?
 

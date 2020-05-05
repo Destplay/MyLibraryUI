@@ -13,7 +13,7 @@ public struct DetailImageView: View {
     @ObservedObject var imageLoader: ImageLoader
     @State var image: UIImage = UIImage()
 
-    init(withURL url:String) {
+    public init(withURL url:String) {
         imageLoader = ImageLoader(urlString:url)
     }
     
@@ -37,7 +37,7 @@ public struct ZoomImageView: View {
     @State private var draggedSize: CGSize = CGSize.zero
     @State private var previusDragged: CGSize = CGSize.zero
 
-    init(withURL url:String) {
+    public init(withURL url:String) {
         self.imageLoader = ImageLoader(urlString:url)
     }
     
@@ -97,7 +97,7 @@ public class ImageLoader: ObservableObject {
     @Published var dataIsValid = false
     var data: Data?
 
-    init(urlString:String) {
+    public init(urlString:String) {
         guard let url = URL(string: urlString) else { return }
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
             guard let data = data else { return }

@@ -11,8 +11,14 @@ import SwiftUI
 @available(iOS 13.0, *)
 public struct LoadingView<Content>: View where Content: View {
 
-    @Binding public var isShowing: Bool
-    public var content: () -> Content?
+    @Binding var isShowing: Bool
+    public var content: () -> Content
+    
+    public init(isShowing: Binding<Bool>, @ViewBuilder content: @escaping () -> Content) {
+        
+        self.content = content
+        self._isShowing = isShowing
+    }
     
     public var body: some View {
         GeometryReader { geometry in
